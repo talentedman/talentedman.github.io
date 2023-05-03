@@ -73,6 +73,10 @@
                     <table id="result" class="table table-bordered d-none">
                         <tbody>
                             <tr>
+                                <th>有效期至</th>
+                                <td id="access_until"></td>
+                            </tr>
+                            <tr>
                                 <th>账户名称</th>
                                 <td id="account_name"></td>
                             </tr>
@@ -201,6 +205,9 @@
             } else {
                 const errorMessage = document.querySelector("#error-message");
                 errorMessage.classList.add("d-none");
+                document.querySelector("#access_until").innerText = new Date(
+                    data.access_until * 1000
+                ).toLocaleString();
                 document.querySelector("#account_name").innerText =
                     data.account_name;
                 document.querySelector("#payment_method_status").innerText =
