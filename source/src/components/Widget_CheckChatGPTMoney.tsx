@@ -7,7 +7,7 @@ async function _requestApiInfo(apiKey: string) {
 		message.error('缺少API密钥');
 		return;
 	}
-
+	apiKey = apiKey.trim();
 	const queryUrl = 'https://api.openai.com/dashboard/billing/subscription';
 	const headers = {
 		'User-Agent':
