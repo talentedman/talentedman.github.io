@@ -1,4 +1,5 @@
 import { Button, Divider, Input, Table, message } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
 import { useState } from 'react';
 
 async function _requestApiInfo(apiKey: string) {
@@ -43,16 +44,20 @@ async function _requestApiInfo(apiKey: string) {
 			{ headers }
 		);
 		const usageData = await usageResponse.json();
-		const used = usageData.total_usage ? (Math.round(usageData.total_usage) / 100).toFixed(2) : 0;
-		const subscription = data.hard_limit_usd ? (Math.round(data.hard_limit_usd * 100) / 100).toFixed(2) : 0;
+		const used = usageData.total_usage
+			? (Math.round(usageData.total_usage) / 100).toFixed(2)
+			: 0;
+		const subscription = data.hard_limit_usd
+			? (Math.round(data.hard_limit_usd * 100) / 100).toFixed(2)
+			: 0;
 
-        data.apiKey = apiKey;
+		data.apiKey = apiKey;
 		data.used = used;
 		data.subscription = subscription;
 		data.remaining = (Number(subscription) - Number(used)).toFixed(2);
 		data.expirationDate = new Date(data.access_until * 1000).toLocaleString();
 		data.isBindCard = data.has_payment_method ? '已绑卡' : '未绑卡';
-        data.system_hard_limit_usd = data.system_hard_limit_usd.toFixed(2);
+		data.system_hard_limit_usd = data.system_hard_limit_usd.toFixed(2);
 
 		return data;
 	} catch (err: any) {
@@ -64,29 +69,43 @@ async function _requestApiInfo(apiKey: string) {
 export default function Widget_CheckChatGPTMoney() {
 	const [apiKey, setApiKey] = useState('');
 	const [tableData, setTableData] = useState<any[] | null>();
+	const [buttonLoading, setButtonLoading] = useState(false);
 
 	return (
 		<>
 			<Input.Group compact>
-				<Input
-					addonBefore={`API秘钥`}
+				<TextArea
+					// addonBefore={`API秘钥`}
 					placeholder="sk-xxx"
 					style={{ width: '60%' }}
 					value={apiKey}
 					onChange={e => {
 						setApiKey(e.target.value);
 					}}
+					allowClear={!buttonLoading}
+					disabled={buttonLoading}
 				/>
 				<Button
 					type="primary"
+					loading={buttonLoading}
 					onClick={async () => {
-						const data = await _requestApiInfo(apiKey);
-						if (data) {
-							setTableData([data]);
-						} else {
-							setTableData(null);
+						setTableData(null);
+						setButtonLoading(true);
+						const keyList = apiKey.split('\n');
+						for (let i = 0; i < keyList.length; i++) {
+							const skKey = keyList[i];
+							const data = await _requestApiInfo(skKey);
+							if (data) {
+								setTableData(preData => {
+									if (preData) {
+										return [data, ...preData];
+									} else {
+										return [data];
+									}
+								});
+							}
 						}
-						console.log(data);
+						setButtonLoading(false);
 					}}
 				>
 					点击查询
@@ -98,7 +117,7 @@ export default function Widget_CheckChatGPTMoney() {
 			{!tableData ? null : (
 				<Table
 					columns={[
-                        {
+						{
 							title: '有效期至',
 							dataIndex: 'apiKey',
 						},
@@ -118,11 +137,11 @@ export default function Widget_CheckChatGPTMoney() {
 							title: '已消费额度',
 							dataIndex: 'used',
 						},
-                        {
+						{
 							title: '剩余额度',
 							dataIndex: 'remaining',
 						},
-                        {
+						{
 							title: '账户额度',
 							dataIndex: 'subscription',
 						},
