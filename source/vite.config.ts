@@ -65,9 +65,9 @@ export default defineConfig(({ command, mode }) => {
 						}
 					},
 					// chunk 文件名
-					chunkFileNames: 'js/[name]-[hash].js',
+					chunkFileNames: 'static/js/[name]-[hash].js',
 					// 入口文件名
-					entryFileNames: 'js/[name]-[hash].js',
+					entryFileNames: 'static/js/[name]-[hash].js',
 					// 资源文件名
 					assetFileNames: chunkInfo => {
 						// let subDir = 'images';
@@ -76,7 +76,7 @@ export default defineConfig(({ command, mode }) => {
 						// 	subDir = 'css';
 						// }
 						// return `${subDir}/[name]-[hash].[ext]`;
-						return `assets/[name]-[hash].[ext]`;
+						return `static/assets/[name]-[hash].[ext]`;
 					},
 				},
 			},
