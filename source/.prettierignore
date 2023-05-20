@@ -1,0 +1,4 @@
+node_modules
+dist
+src/protobuf/static_c_proto.js
+src/protobuf/static_s_proto.js
