@@ -51,7 +51,10 @@ export default class UpUp {
 
 	draw(content: string, bgColor: string, textColor: string) {
 		let self = this;
-		if (!content) return;
+		if (!content) {
+            self.params.containerDiv.innerHTML = '';
+            return;
+        }
 		self.params.text = content;
 		self.params.bgColor = bgColor;
 		self.params.color = textColor;
