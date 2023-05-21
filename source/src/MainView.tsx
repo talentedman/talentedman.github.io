@@ -2,6 +2,7 @@ import { Layout, Menu } from 'antd';
 import { RadarChartOutlined } from '@ant-design/icons';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import upupimg_0 from './images/upup/upupimg_0.png';
 
 const { Content, Sider } = Layout;
 
@@ -13,12 +14,7 @@ const menuItems = [
 	},
 	{
 		path: '/upup',
-		icon: (
-			<img
-				src="/src/images/upup/upupimg_0.png"
-				style={{ height: 14, objectFit: 'contain' }}
-			/>
-		),
+		icon: <img src={upupimg_0} style={{ height: 14, objectFit: 'contain' }} />,
 		label: '举牌小人生成器',
 	},
 ];
