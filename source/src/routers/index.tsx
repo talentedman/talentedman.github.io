@@ -4,9 +4,27 @@ import { RouteObject } from 'react-router-dom';
 import MainView from '../MainView';
 
 const Widget_CheckChatGPTMoney = lazy(() => import('@/components/Widget_CheckChatGPTMoney'));
+const Widget_UpUp = lazy(() => import('@/components/Widget_UpUp'));
+
+export const routers: RouteObject[] = [
+	{
+		path: '/',
+		element: <MainView />,
+		children: [
+			{
+				index: true,
+				element: lazyLoad(<Widget_CheckChatGPTMoney />),
+			},
+			{
+				path: '/upup',
+				element: lazyLoad(<Widget_UpUp />),
+			},
+		],
+	},
+];
 
 // 实现懒加载的用Suspense包裹 定义函数
-const lazyLoad = (children: ReactNode): ReactNode => {
+function lazyLoad(children: ReactNode): ReactNode {
 	const loadWidget = (
 		<div
 			style={{
@@ -21,17 +39,4 @@ const lazyLoad = (children: ReactNode): ReactNode => {
 		</div>
 	);
 	return <Suspense fallback={loadWidget}>{children}</Suspense>;
-};
-
-export const routers: RouteObject[] = [
-	{
-		path: '/',
-		element: <MainView />,
-		children: [
-			{
-				index: true,
-				element: lazyLoad(<Widget_CheckChatGPTMoney />),
-			},
-		],
-	},
-];
+}

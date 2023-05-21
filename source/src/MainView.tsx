@@ -13,6 +13,11 @@ const menuItems = [
 		icon: <RadarChartOutlined />,
 		label: '测试OpenAI余额',
 	},
+	{
+		path: '/upup',
+		icon: <RadarChartOutlined />,
+		label: '举牌小人生成器',
+	}
 ];
 
 function MainView() {
