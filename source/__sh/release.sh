@@ -15,6 +15,11 @@ mv -f ${buildDirPath} ${rootPath}
 
 cd ${rootPath}
 
-git add .
-git commit -m "通过脚本release.sh发版"
-git push
+if [ -f ${indexHtmlPath} ]; then
+    git add .
+    git commit -m "通过脚本release.sh发版"
+    git push
+else
+    echo "打包失败 index.html不存在???"
+fi
+
