@@ -1,4 +1,4 @@
-import { Button, Divider, Input, Table, message } from 'antd';
+import { Button, Divider, Table, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { useState } from 'react';
 
@@ -73,16 +73,21 @@ export default function Widget_CheckChatGPTMoney() {
 
 	return (
 		<>
-			<Input.Group compact>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'row',
+					alignItems: 'center'
+				}}
+			>
 				<TextArea
-					// addonBefore={`API秘钥`}
 					placeholder="sk-xxx"
-					style={{ width: '60%' }}
+					style={{ width: '60%', marginRight: 20 }}
 					value={apiKey}
 					onChange={e => {
 						setApiKey(e.target.value);
 					}}
-					allowClear={!buttonLoading}
+					allowClear
 					disabled={buttonLoading}
 				/>
 				<Button
@@ -110,7 +115,7 @@ export default function Widget_CheckChatGPTMoney() {
 				>
 					点击查询
 				</Button>
-			</Input.Group>
+			</div>
 
 			<Divider />
 
