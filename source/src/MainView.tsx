@@ -1,7 +1,5 @@
 import { Layout, Menu } from 'antd';
-import {
-	RadarChartOutlined,
-} from '@ant-design/icons';
+import { RadarChartOutlined } from '@ant-design/icons';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -15,9 +13,14 @@ const menuItems = [
 	},
 	{
 		path: '/upup',
-		icon: <RadarChartOutlined />,
+		icon: (
+			<img
+				src="/src/images/upup/upupimg_0.png"
+				style={{ height: 14, objectFit: 'contain' }}
+			/>
+		),
 		label: '举牌小人生成器',
-	}
+	},
 ];
 
 function MainView() {
