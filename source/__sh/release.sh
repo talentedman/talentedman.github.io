@@ -13,6 +13,8 @@ rootPath=${now_path}/../../
 
 mv -f ${buildDirPath} ${rootPath}
 
+cd ${rootPath}
+
 git add .
 git commit -m "通过脚本release.sh发版"
 git push
