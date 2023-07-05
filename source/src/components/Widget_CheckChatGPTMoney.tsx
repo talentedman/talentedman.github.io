@@ -1,6 +1,7 @@
 import { Button, Divider, Table, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { useState } from 'react';
+import ClipboardJS from 'clipboard';
 
 async function _requestApiInfo(apiKey: string) {
 	if (!apiKey) {
@@ -114,6 +115,27 @@ export default function Widget_CheckChatGPTMoney() {
 					}}
 				>
 					点击查询
+				</Button>
+
+				<Button
+					style={{ marginLeft: 20 }}
+					type="primary"
+					id={'copy_btn'}
+					disabled={!tableData}
+					onClick={() => {
+						new ClipboardJS('#copy_btn', {
+							text: function(trigger) {
+								let ret = '';
+								tableData?.forEach(data => {
+									ret += `${data.apiKey}\n`;
+								})
+								return ret;
+							}
+						});
+						message.success('复制成功');
+					}}
+				>
+					复制有效的key
 				</Button>
 			</div>
 
