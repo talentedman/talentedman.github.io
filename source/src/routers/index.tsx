@@ -3,7 +3,7 @@ import { lazy, ReactNode, Suspense } from 'react';
 import { RouteObject } from 'react-router-dom';
 import MainView from '../MainView';
 
-const Widget_CheckChatGPTMoney = lazy(() => import('@/components/Widget_CheckChatGPTMoney'));
+const Widget_Xbbcq = lazy(() => import('@/components/Widget_Xbbcq'));
 const Widget_UpUp = lazy(() => import('@/components/Widget_UpUp'));
 
 export const routers: RouteObject[] = [
@@ -12,8 +12,8 @@ export const routers: RouteObject[] = [
 		element: <MainView />,
 		children: [
 			{
-				index: true,
-				element: lazyLoad(<Widget_CheckChatGPTMoney />),
+				path: '/',
+				element: lazyLoad(<Widget_Xbbcq />),
 			},
 			{
 				path: '/upup',

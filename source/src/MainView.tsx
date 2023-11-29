@@ -10,7 +10,7 @@ const menuItems = [
 	{
 		path: '/',
 		icon: <RadarChartOutlined />,
-		label: '测试OpenAI余额',
+		label: '小冰冰传奇',
 	},
 	{
 		path: '/upup',
