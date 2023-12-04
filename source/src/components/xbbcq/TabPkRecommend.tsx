@@ -106,7 +106,7 @@ export default function TabPkRecommend() {
 						);
 					})}
 				</>
-			) : null}
+			) : <h2>暂无推荐阵容</h2>}
 		</>
 	);
 }
