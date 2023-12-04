@@ -4,6 +4,7 @@ import { DisplayHeroWidget } from './xbbcq/DisplayHeroWidget';
 import { useState } from 'react';
 import TabHandBook from './xbbcq/TabHandBook';
 import { TabOrderHero } from './xbbcq/TabOrderHero';
+import TabPkRecommend from './xbbcq/TabPkRecommend';
 
 export default function Widget_Xbbcq() {
     const [tab, setTab] = useState<'handbook' | 'station' | 'pk'>('handbook');
@@ -18,6 +19,8 @@ export default function Widget_Xbbcq() {
                 return <TabHandBook />
             case 'station':
                 return <TabOrderHero />
+            case 'pk':
+                return <TabPkRecommend />
             default:
                 return null;
         }

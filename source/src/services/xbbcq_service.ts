@@ -1,4 +1,13 @@
-export const powerHeroArray = [
+export interface Hero {
+    name: string;
+    name2: string;
+    name3?: string;
+    name4?: string;
+    imgName: string;
+    order: number;
+}
+
+export const powerHeroArray: Hero[] = [
     {
         name: '潮汐',
         name2: 'cx',
@@ -150,7 +159,7 @@ export const powerHeroArray = [
     },
 ]
 
-export const intelligenceHeroArray = [
+export const intelligenceHeroArray: Hero[] = [
     {
         name: '蓝胖',
         name2: 'lp',
@@ -287,8 +296,7 @@ export const intelligenceHeroArray = [
     },
 ]
 
-
-export const agileHeroArray = [
+export const agileHeroArray: Hero[] = [
     {
         name: '白银刺客',
         name2: 'byck',
@@ -440,3 +448,8 @@ export const heroArray = [
 ]
 
 export const orderHeroArray = heroArray.sort((a, b) => a.order - b.order)
+
+export function findHeroImg(heroName: string) {
+    const hero = heroArray.find(hero => hero.name === heroName)
+    return hero!.imgName;
+}
