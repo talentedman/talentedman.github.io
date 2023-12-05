@@ -1,12 +1,59 @@
+import { HeroName } from "./xbbcq_service";
 
+interface PkRecommend {
+    enemyList: HeroName[];
+    recommengList: HeroName[][];
+}
 
-const pkRecommendArray = [
+const pkRecommendArray: PkRecommend[] = [
     {
         enemyList: ['潮汐', '全能骑士', '巨魔', '幻影刺客', '舞姬'],
         recommengList: [
             ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
         ]
-    }
+    },
+    {
+        enemyList: ['骨王', '巨魔', '舞姬', '白虎', '小黑'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['骨王', '巨魔', '美杜莎', '白虎', '小黑'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['骨王', '幻影刺客', '美杜莎', '白虎', '小黑'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['骨王', '敌法', '幻影刺客', '白虎', '小黑'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['骨王', '灰烬之灵', '美杜莎', '圣堂刺客', '小黑'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['尸王', '全能骑士', '末日', '巫妖', '冰女'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['骨王', '灰烬之灵', '圣堂刺客', '白虎', '小黑'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
 ]
 
 // 判断两个数组的元素是不是一样的，即使顺序不一样
