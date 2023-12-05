@@ -54,6 +54,24 @@ const pkRecommendArray: PkRecommend[] = [
             ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
         ]
     },
+    {
+        enemyList: ['潮汐', '全能骑士', '灵魂守卫', '神灵武士', '小黑'],
+        recommengList: [
+            ['尸王', '末日', '舞姬', '巫妖', '天怒法师']
+        ]
+    },
+    {
+        enemyList: ['骨王', '末日', '巨魔', '幻影刺客', '舞姬'],
+        recommengList: [
+            ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女']
+        ]
+    },
+    {
+        enemyList: ['潮汐', '全能骑士', '幻影刺客', '死亡先知', '冰女'],
+        recommengList: [
+            ['骨王', '末日', '幻影刺客', '白虎', '小黑']
+        ]
+    },
 ]
 
 // 判断两个数组的元素是不是一样的，即使顺序不一样
@@ -72,5 +90,5 @@ export function findRecommendList(inputEnemyList: string[]) {
             return pkRecommendArray[i].recommengList;
         }
     }
-    return [];
+    return [[]];
 }
